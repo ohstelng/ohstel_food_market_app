@@ -130,7 +130,7 @@ class _AddNewFastFoodState extends State<AddNewFastFood> {
   }
 
   Future getUniList() async {
-    String url = baseApiUrl +"/hostel_api/searchKeys";
+    String url = baseApiUrl + "/hostel_api/searchKeys";
     var response = await http.get(url);
     var result = json.decode(response.body);
     print(result);
@@ -261,8 +261,7 @@ class _AddNewFastFoodState extends State<AddNewFastFood> {
   Future<Map> getAreaNamesFromApi() async {
     String _uniName = uniName ?? await HiveMethods().getUniName();
     debugPrint('$_uniName');
-    String url =
-        baseApiUrl +'/food_api/${_uniName.toLowerCase()}';
+    String url = baseApiUrl + '/food_api/${_uniName.toLowerCase()}';
     var response = await http.get(url);
     Map data = json.decode(response.body);
     return data;
@@ -409,9 +408,22 @@ class _AddNewFastFoodState extends State<AddNewFastFood> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text(
-                                "Store Image",
-                                style: Styles.titleTextStyle,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Store Image",
+                                    style: Styles.titleTextStyle,
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        fastFoodImage = null;
+                                      });
+                                    },
+                                    icon: Icon(Icons.refresh),
+                                  )
+                                ],
                               ),
                               SizedBox(
                                 height: 8,
@@ -563,10 +575,24 @@ class _AddNewFastFoodState extends State<AddNewFastFood> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text(
-                                "Item Image",
-                                style: Styles.titleTextStyle,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Item Image",
+                                    style: Styles.titleTextStyle,
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _foodImage = null;
+                                      });
+                                    },
+                                    icon: Icon(Icons.refresh),
+                                  )
+                                ],
                               ),
+                              SizedBox(height: 10),
                               InkWell(
                                 onTap: () {
                                   getFoodImage();

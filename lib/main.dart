@@ -20,10 +20,13 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // provider is being used here at the top most widget tree so we can notify
+    // every other sub widget down the widget tree.
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "OHstel Food and Market Agent App",
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: LandingPage(),

@@ -8,6 +8,7 @@ import 'package:ohstel_food_market_app/food/models/food_details_model.dart';
 import 'package:ohstel_food_market_app/widgets/styles.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../constant.dart';
 import '../food_methods.dart';
 
 class AddNewDrinksPage extends StatefulWidget {
@@ -90,6 +91,7 @@ class _AddNewDrinksPageState extends State<AddNewDrinksPage> {
         print(item.toMap());
         await FoodMethods().saveDrinkToServer(itemDetails: item);
         Fluttertoast.showToast(msg: 'Done');
+        showDonePopUp(context: context, message: 'Done');
       }
 
       if (!mounted) return;
